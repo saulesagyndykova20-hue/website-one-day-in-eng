@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One Day in English</title>
+<style>
+:root{--bg:#07152f;--panel:#102650;--cyan:#47e7ff;--pink:#ff5fd2;--violet:#a87cff;--mint:#66f3b0;--yellow:#ffd95e;--text:#f6fbff;--muted:#b8c8e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top right,#321d69 0,#07152f 38%,#040b1b 100%);color:var(--text)}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px;background:#07152fe8;border-bottom:1px solid #3b5a93}
+nav a{color:white;text-decoration:none;font-weight:700;font-size:14px;padding:8px 12px;border-radius:18px;background:#142d5b}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:70px 20px 35px}
+.hero h1{font-size:clamp(46px,8vw,94px);line-height:.9;margin:0;background:linear-gradient(90deg,#fff,var(--cyan),var(--pink));-webkit-background-clip:text;color:transparent}
+.hero h2{font-size:clamp(20px,3vw,36px);margin:20px auto 8px;max-width:900px}
+.hero p{color:var(--muted);font-size:18px;max-width:760px}
+.btn{border:0;border-radius:16px;padding:14px 20px;font-weight:800;cursor:pointer;background:linear-gradient(90deg,var(--pink),var(--violet));color:white;font-size:16px;box-shadow:0 0 25px #ff5fd255}
+section{max-width:1120px;margin:auto;padding:50px 20px}
+.title{text-align:center;font-size:36px;margin:0 0 24px}.subtitle{text-align:center;color:var(--muted);margin-top:-12px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:linear-gradient(180deg,#142d5bea,#0b1c3cea);border:1px solid #3e67a5;border-radius:22px;padding:20px;box-shadow:0 15px 35px #0005}
+.card h3{margin-top:0;color:var(--cyan)}
+input,select{width:100%;padding:12px;border-radius:12px;border:1px solid #4c6da3;background:#07152f;color:white;margin:7px 0 14px}
+.radio{display:flex;gap:15px;flex-wrap:wrap;margin:8px 0 16px}.radio label{background:#0a1936;padding:10px 12px;border-radius:12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.stat{padding:18px;text-align:center;border-radius:18px;background:#122b59;border:1px solid #456ba5}.stat b{display:block;font-size:34px;color:var(--cyan)}
+.wordlist{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.pill{padding:8px 11px;border-radius:20px;background:#243f75}
+.quiz{font-size:24px;text-align:center}.answers{display:grid;gap:10px;margin-top:15px}.answers button{padding:13px;border-radius:12px;border:1px solid #4d6fa7;background:#0b1b3b;color:white;cursor:pointer;font-size:16px}.answers button:hover{background:#18386e}
+.good{color:var(--mint)}.bad{color:#ff8d9c}.bigword{font-size:42px;color:var(--pink);font-weight:900}
+.progress{height:16px;background:#07152f;border-radius:12px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));width:0}
+.footer{text-align:center;padding:40px 20px;color:#9eb3d9;border-top:1px solid #294575}
+.note{padding:12px;border-radius:14px;background:#0a1b3a;border-left:4px solid var(--yellow);color:#dbe7ff}
+.challenge{font-size:18px}.score{font-size:34px;font-weight:900;color:var(--yellow)}
+</style>
+</head>
+<body>
+<nav>
+<a href="#home">Home</a><a href="#tracker">Tracker</a><a href="#detective">Detective</a><a href="#hear">Hear It!</a><a href="#hunt">Word Hunt</a><a href="#result">My Result</a>
+</nav>
+
+<header class="hero" id="home">
+<div>
+<div style="font-size:22px;color:#66f3b0;font-weight:800">SCIENTIFIC RESEARCH PROJECT • GRADE 7</div>
+<h1>ONE DAY<br>IN ENGLISH</h1>
+<h2>How Much English Do Students See and Hear in Their Digital Life?</h2>
+<p>Your screen speaks English. Do you notice it? Track the English around you, play mini-games, discover new words and calculate your Digital English Footprint.</p>
+<button class="btn" onclick="location.href='#tracker'">START MY DIGITAL DAY →</button>
+</div>
+</header>
+
+<section id="tracker">
+<h2 class="title">📱 English Tracker</h2>
+<p class="subtitle">Add English words and phrases you meet during your real digital day.</p>
+<div class="grid">
+<div class="card">
+<label>Where did you find English?</label>
+<select id="source"><option>Social Media</option><option>Game</option><option>Music</option><option>Video</option><option>Application</option><option>Study</option><option>Advertisement</option><option>Other</option></select>
+<label>English word / phrase</label>
+<input id="word" placeholder="e.g. follow, level up, welcome back">
+<div class="radio"><label><input type="radio" name="type" value="Visual" checked> I saw it</label><label><input type="radio" name="type" value="Audio"> I heard it</label></div>
+<label>Did you understand it?</label>
+<select id="understand"><option value="Yes">Yes</option><option value="Partly">Partly</option><option value="No">No</option></select>
+<button class="btn" onclick="addWord()">ADD TO MY DAY</button>
+</div>
+<div class="card">
+<h3>My words today</h3>
+<div id="wordList" class="wordlist"><span style="color:#9eb3d9">No words yet. Start noticing English!</span></div>
+<p class="note">Tip: do not search for English specially. Use your phone normally and record what you naturally see or hear.</p>
+</div>
+</div>
+</section>
+
+<section id="detective">
+<h2 class="title">🕵️ Digital English Detective</h2>
+<p class="subtitle">Can you understand common digital English?</p>
+<div class="card quiz">
+<div>Round <span id="qnum">1</span>/5</div>
+<div class="bigword" id="qword">SHARE</div>
+<div class="answers" id="answers"></div>
+<p id="feedback"></p>
+<div class="score">Points: <span id="points">0</span></div>
+</div>
+</section>
+
+<section id="hear">
+<h2 class="title">🎧 Hear It!</h2>
+<p class="subtitle">Listening challenge — read the phrase as if you heard it in a video, game or app.</p>
+<div class="grid" id="hearCards"></div>
+</section>
+
+<section id="hunt">
+<h2 class="title">🔎 Word Hunt</h2>
+<p class="subtitle">Find 5 English words around you right now.</p>
+<div class="card">
+<div class="grid">
+<input class="hunt" placeholder="1. English word">
+<input class="hunt" placeholder="2. English word">
+<input class="hunt" placeholder="3. English word">
+<input class="hunt" placeholder="4. English word">
+<input class="hunt" placeholder="5. English word">
+</div>
+<button class="btn" onclick="finishHunt()">CHECK MY HUNT</button>
+<p id="huntMsg" class="challenge"></p>
+</div>
+</section>
+
+<section id="result">
+<h2 class="title">🏆 My Digital English Footprint</h2>
+<p class="subtitle">Your personal result grows as you use the English Tracker.</p>
+<div class="stats">
+<div class="stat"><b id="total">0</b>English contacts</div>
+<div class="stat"><b id="visual">0</b>Visual English</div>
+<div class="stat"><b id="audio">0</b>Audio English</div>
+<div class="stat"><b id="newwords">0</b>New / unclear words</div>
+<div class="stat"><b id="known">0</b>Words I understood</div>
+</div>
+<div class="card" style="margin-top:18px;text-align:center">
+<h3>Your level</h3>
+<div class="bigword" id="level">ENGLISH EXPLORER</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p id="levelText">Start tracking English to build your Digital English Footprint.</p>
+</div>
+<div class="grid" style="margin-top:18px">
+<div class="card"><h3>SEE 👁️</h3><p>Find English in your real digital life.</p></div>
+<div class="card"><h3>NOTICE 🔎</h3><p>Pay attention to the word or phrase.</p></div>
+<div class="card"><h3>UNDERSTAND 🧠</h3><p>Understand its meaning from context.</p></div>
+<div class="card"><h3>USE 💬</h3><p>Use the new word in your own sentence.</p></div>
+</div>
+</section>
+
+<div class="footer">
+<strong>ONE DAY IN ENGLISH</strong><br>
+Notice English • Use English • Grow with English<br><br>
+Student research website • Grade 7
+</div>
+
+<script>
+let entries=JSON.parse(localStorage.getItem('ode_entries')||'[]');
+let quizPoints=0, qi=0;
+const quiz=[
+{w:'SHARE',a:['удалить','поделиться','закрыть'],c:1},
+{w:'SKIP',a:['пропустить','сохранить','отправить'],c:0},
+{w:'UPDATE',a:['обновить','выключить','перевести'],c:0},
+{w:'FOLLOW',a:['подписаться / следить','удалить','загрузить'],c:0},
+{w:'SEARCH',a:['играть','искать','слушать'],c:1}
+];
+function addWord(){
+ const word=document.getElementById('word').value.trim();
+ if(!word){alert('Enter an English word or phrase.');return}
+ const source=document.getElementById('source').value;
+ const type=document.querySelector('input[name=type]:checked').value;
+ const understand=document.getElementById('understand').value;
+ entries.push({word,source,type,understand});
+ localStorage.setItem('ode_entries',JSON.stringify(entries));
+ document.getElementById('word').value='';
+ render();
+}
+function render(){
+ const list=document.getElementById('wordList');
+ list.innerHTML=entries.length?entries.map(e=>`<span class="pill">${e.word} · ${e.type}</span>`).join(''):'<span style="color:#9eb3d9">No words yet. Start noticing English!</span>';
+ let v=entries.filter(e=>e.type==='Visual').length,a=entries.filter(e=>e.type==='Audio').length;
+ let k=entries.filter(e=>e.understand==='Yes').length,n=entries.length-k;
+ total.textContent=entries.length; visual.textContent=v; audio.textContent=a; known.textContent=k; newwords.textContent=n;
+ let l='ENGLISH EXPLORER',t='Start tracking English to build your Digital English Footprint.';
+ if(entries.length>=81){l='DIGITAL ENGLISH MASTER';t='Amazing! You notice English everywhere.'}
+ else if(entries.length>=51){l='ENGLISH TRACKER';t='Great work! Your English awareness is growing.'}
+ else if(entries.length>=21){l='DIGITAL LANGUAGE DETECTIVE';t='You are actively noticing English in digital life.'}
+ level.textContent=l;levelText.textContent=t;bar.style.width=Math.min(entries.length,100)+'%';
+}
+function showQ(){
+ if(qi>=quiz.length){qword.textContent='FINISHED!';answers.innerHTML='';feedback.innerHTML='<span class="good">Great detective work!</span>';return}
+ let q=quiz[qi];qnum.textContent=qi+1;qword.textContent=q.w;
+ answers.innerHTML=q.a.map((x,i)=>`<button onclick="answer(${i})">${String.fromCharCode(65+i)}) ${x}</button>`).join('');
+ feedback.textContent='';
+}
+function answer(i){
+ let q=quiz[qi];
+ if(i===q.c){quizPoints+=10;feedback.innerHTML='<span class="good">Correct! +10 points</span>'}else feedback.innerHTML='<span class="bad">Try the next one!</span>';
+ points.textContent=quizPoints;qi++;setTimeout(showQ,450);
+}
+const hear=[
+['Welcome back!','Добро пожаловать обратно!'],
+["Let's start!",'Давайте начнём!'],
+['Try again!','Попробуй ещё раз!'],
+['You are the winner!','Ты победитель!'],
+['See you next time!','Увидимся в следующий раз!']
+];
+hearCards.innerHTML=hear.map((x,i)=>`<div class="card"><h3>🔊 ${x[0]}</h3><button class="btn" onclick="this.nextElementSibling.style.display='block'">SHOW MEANING</button><p style="display:none" class="good">${x[1]}</p></div>`).join('');
+function finishHunt(){
+ let vals=[...document.querySelectorAll('.hunt')].filter(x=>x.value.trim()).length;
+ huntMsg.innerHTML=vals===5?'<span class="good">Great job! Your digital world is full of English. ⭐</span>':`You found ${vals}/5. Keep looking!`;
+}
+render();showQ();
+</script>
+</body>
+</html>
